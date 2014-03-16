@@ -29,10 +29,16 @@
 	<script type="text/javascript" src="../Source/Collapse.Cookie.js"></script>
 
 	<script type="text/javascript">
+
+		var tree1;
+		var tree2;
+		var tree3;
+
 		window.addEvent('domready', function(){
 			// Example #1
-			new Tree('tree', {
-
+			tree1 = new Tree('tree', {
+				//serialize() method will include these properties
+				properties: ['name','class','text'],
 				checkDrag: function(element){
 					return !element.hasClass('nodrag');
 				},
@@ -77,11 +83,12 @@
 			});
 
 			// Example #2
-			new Collapse.Cookie('collapse');
+			tree2 = new Collapse.Cookie('collapse');
 
 			// Example #3
-			new Tree('both');
+			tree3 = new Tree('both');
 			new Collapse('both');
+
 		});
 	</script>
 </head>

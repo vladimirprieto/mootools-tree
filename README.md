@@ -52,6 +52,7 @@ The return value can then be encoded and sent to the server
 * indicatorOffset: (number, defaults to *0*) The left offset of the indicator
 * cloneOffset: (string, defaults to *{x: 16, y: 16}*) The offset to be used for the cloned element
 * cloneOpacity: (boolean, defaults to *0.8*) Opacity of the currently dragged element
+* properties: (array, default []) when defined, serialize() method will include them on properties key
 * checkDrag(element): (function, returns boolean) Checks if the element that is to be dragged is draggable.
 * checkDrop(droppable, dropOptions): (function, returns boolean) Checks if the droppable element can be dropped on
 

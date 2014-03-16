@@ -31,7 +31,8 @@ this.Tree = new Class({
 		cloneOffset: {x: 16, y: 16},
 		cloneOpacity: 0.8,
 		checkDrag: Function.from(true),
-		checkDrop: Function.from(true)
+		checkDrop: Function.from(true),
+		properties: []
 	},
 
 	initialize: function(element, options){
@@ -203,6 +204,21 @@ this.Tree = new Class({
 
 			result[index] = {};
 			result[index].id = fn(el);
+
+			result[index].properties = {};
+			this.options.properties.forEach(function(prop){
+				if (prop == 'text'){
+					//when node has childs, get('text') returns all text childs
+					//this tries to get just 'text' of its own node (works when every node use span tag)
+					firstChild = $(el).getFirst();
+					if ( firstChild != null )
+						result[index].properties[prop] = firstChild.getProperty(prop);
+					else 
+						result[index].properties[prop] = el.getProperty(prop);
+				} else
+					result[index].properties[prop] = el.getProperty(prop);
+			});
+
 			result[index].child = child ? this.serialize(fn, child, val) : val(el);
 
 		}, this);
