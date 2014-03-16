@@ -224,6 +224,33 @@ this.Tree = new Class({
 		}, this);
 
 		return result;
+	},
+
+	unserialize: function(json){
+		
+		var tree = this;
+		var nodes = JSON.decode(json);
+		nodes.forEach(function(n){
+			tree.element.adopt( tree.buildNode(n) );
+		});
+
+	},
+
+	buildNode: function(pather){
+		var node = new Element('li');
+		$(node).set(pather.properties);
+
+		if ( pather.child ){
+
+			var ul = new Element('ul');
+			pather.child.forEach(function(c){
+				ul.adopt( this.buildNode(c) );
+			}.bind(this));
+
+			node.adopt(ul);
+		}
+
+		return node;
 	}
 
 });

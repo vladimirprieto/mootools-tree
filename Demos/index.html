@@ -33,6 +33,7 @@
 		var tree1;
 		var tree2;
 		var tree3;
+		var tree4;
 
 		window.addEvent('domready', function(){
 			// Example #1
@@ -89,6 +90,9 @@
 			tree3 = new Tree('both');
 			new Collapse('both');
 
+			// Example #4, same as #1 but build on the fly
+			tree4 = new Tree('unserialize');
+			tree4.unserialize('[{"id":null,"properties":{"name":null,"class":null,"text":"Test 1"},"child":false},{"id":null,"properties":{"name":null,"class":null,"text":"Test 2"},"child":false},{"id":null,"properties":{"name":null,"class":null,"text":"Test 3"},"child":[{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.1"},"child":[{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.1.1"},"child":false},{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.1.2"},"child":false}]},{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.2"},"child":false},{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.3"},"child":false},{"id":null,"properties":{"name":null,"class":null,"text":"Test 3.4"},"child":false}]},{"id":null,"properties":{"name":null,"class":"nodrop","text":"Test 4"},"child":false},{"id":null,"properties":{"name":null,"class":"nodrag","text":"Test 5"},"child":false}]');
 		});
 	</script>
 </head>
@@ -153,6 +157,10 @@
 				<li><a class="expand" href="#"></a><span>Test 3.4</span></li>
 			</ul>
 		</li>
+	</ul>
+
+	<h1>Unserialize</h1>
+	<ul class="tree" id="unserialize">
 	</ul>
 </div>
 </body>

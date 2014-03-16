@@ -1,3 +1,5 @@
+this is a fork of the [MooTools Tree plugin](https://github.com/cpojer/mootools-tree).  i simple add: properties option, onSelect evetn and unserilize() method.
+
 MooTools Tree
 =============
 
@@ -59,6 +61,10 @@ The return value can then be encoded and sent to the server
 #### Events
 * onChange(): fires when the tree changes. Can be used in conjunction with the 'serialize' method.
 * onSelect(): fires when mouse is on a item.  element selected is send to the function.
+
+#### Methods
+* serialize(): returns json representation of the tree
+* unserialize(json): (json is a json structure) build the tree from a json structure
 
 ### Collapse
 
