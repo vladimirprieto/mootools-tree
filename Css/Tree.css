@@ -69,3 +69,7 @@ span.dispose {
 	float: right;
 	color: #800;
 }
+
+span.tree_selected {
+	font-weight: bold;
+}

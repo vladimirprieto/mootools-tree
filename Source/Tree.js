@@ -38,6 +38,7 @@ this.Tree = new Class({
 	initialize: function(element, options){
 		this.setOptions(options);
 		element = this.element = document.id(element);
+		this.selected = null;
 		return this.check(element) || this.setup();
 	},
 
@@ -87,6 +88,16 @@ this.Tree = new Class({
 			onDrag: this.bound('onDrag'),
 			onDrop: this.bound('onDrop')
 		}).start(event);
+
+		this.select(element);
+	},
+
+	select: function(element){
+
+		if (this.selected != null)
+			this.selected.getFirst().removeClass('tree_selected');
+		this.selected = element;
+		this.selected.getFirst().addClass('tree_selected');
 
 		this.fireEvent('select', [element]);
 	},
@@ -238,7 +249,15 @@ this.Tree = new Class({
 
 	buildNode: function(pather){
 		var node = new Element('li');
-		$(node).set(pather.properties);
+		var text = new Element('span');
+		Object.each( pather.properties, function(value, prop){
+			if ( prop == 'text' )
+				$(text).set('text',value);
+			else
+				$(node).set(prop,value);
+		});
+
+		$(node).adopt( $(text) );
 
 		if ( pather.child ){
 
